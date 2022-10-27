@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/toasts/toasts.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { RecommendationItemComponent } from './components/recommendation-item/recommendation-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LayoutComponent } from './pages/layout/layout.component';
     LoginComponent,
     ToastComponent,
     RegisterComponent,
-    LayoutComponent
+    LayoutComponent,
+    RecommendationItemComponent
   ],
   imports: [
     BrowserModule,
