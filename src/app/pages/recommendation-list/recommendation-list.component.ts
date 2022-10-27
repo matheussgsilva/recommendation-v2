@@ -22,16 +22,23 @@ export class RecommendationListComponent implements OnInit {
     this.loadRecommendations;
   }
 
-  public loadCategories() {
-
+  public async loadCategories(): Promise<void> {
+    this.categories = await this.apiService.get<Category[]>('category')
   }
 
-  public loadRecommendations() {
+  public async loadRecommendations(category: number): Promise<void> {
+    let params: object = {}
 
+    if (category != this.ALL_RECOMMENDATIONS) {
+      params = { category }
+    }
+
+    this.recommendations = await this.apiService.get<Recommendation[]>('recommendations', params)
   }
 
-  public filter(categoryId: number) {
-
+  public filter(categoryId: number): void {
+    this.currentCategory = categoryId;
+    this.loadRecommendations(categoryId);
   }
 
 }
