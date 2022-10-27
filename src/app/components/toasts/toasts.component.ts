@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppToastService } from 'src/app/services/toast.service';
 
 @Component({
-  selector: 'app-toast',
-  templateUrl: './toast.component.html',
-  styleUrls: ['./toast.component.scss']
+  selector: 'app-toasts',
+  templateUrl: './toasts.component.html',
+  styleUrls: ['./toasts.component.scss']
 })
 export class ToastComponent {
 
   constructor(public toastService: AppToastService) {}
 
-  
+
 }

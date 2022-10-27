@@ -1,7 +1,10 @@
-import { ApiService } from './../../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { ApiService } from './../../services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { AppToastService } from 'src/app/services/toast.service'
+
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -13,7 +16,8 @@ export class LoginComponent {
 
   constructor(
     private apiService: ApiService,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastService: AppToastService
   ) { }
 
   public form: FormGroup = new FormGroup({
@@ -25,9 +29,9 @@ export class LoginComponent {
     if(this.form.valid) {
       this.apiService.post<User>('sessions', this.form.value)
       .then(data => {this.authService.login(data)})
-      .catch(response => console.log(response.error.error))
+      .catch(response => this.toastService.show('Atenção', response.error.error))
     } else {
-      console.log("Preencha o formulário antes de continuar")
+      this.toastService.show('Atenção', 'Preencha o formulário antes de continuar')
     }
   }
 
