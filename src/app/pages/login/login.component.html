@@ -2,14 +2,14 @@
   <div class="card w-50">
     <div class="card-body p-4">
       <h2>Acesse a sua conta</h2>
-      <form>
+      <form [formGroup]="form">
         <div class="mb-3">
           <label for="email" class="form-label">E-mail</label>
-          <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail" />
+          <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail" formControlName="email"/>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Senha</label>
-          <input type="password" id="password" class="form-control" placeholder="Digite sua senha" />
+          <input type="password" id="password" class="form-control" placeholder="Digite sua senha" formControlName="password"/>
         </div>
         <button class="btn btn-dark w-100" >Entrar</button>
       </form>
