@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Recommendation } from 'src/app/models/recommendation';
 
 @Component({

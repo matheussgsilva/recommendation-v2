@@ -1,1 +1,22 @@
-<p>recommendation-list works!</p>
+<h1 class="mb-3">Recomendações</h1>
+
+<div class="btn-group w-100 mb-4" role="group">
+
+  <button type="button" class="btn btn-dark" (click)="filter(ALL_RECOMMENDATIONS)"
+    [class.active]="currentCategory == ALL_RECOMMENDATIONS">Todos</button>
+
+  <button type="button" class="btn btn-dark" (click)="filter(category.id)" *ngFor="let category of categories"
+    [class.active]="currentCategory == category.id">{{category.name}}</button>
+</div>
+
+<app-empty-state title="Nenhuma recomendação" message="Volte novamente mais tarde ou crie uma nova recomendação"
+  *ngIf="recommendations.length == 0"></app-empty-state>
+
+<div class="row align-items-stretch">
+  <div class="col-12 col-md-3 mb-4" *ngFor="let recommendation of recommendations">
+    <app-recommendation-item
+      [recommendation]="recommendation"
+    >
+    </app-recommendation-item>
+  </div>
+</div>
