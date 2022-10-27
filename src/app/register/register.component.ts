@@ -21,7 +21,7 @@ export class RegisterComponent {
   ) { }
 
   public form: FormGroup = new FormGroup({
-    nome: new FormControl('João', [Validators.required]),
+    name: new FormControl('João', [Validators.required]),
     email: new FormControl('joao.scarpa@designa.com', [Validators.required]),
     password: new FormControl('123456', [Validators.required])
   })
