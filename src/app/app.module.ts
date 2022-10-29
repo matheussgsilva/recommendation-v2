@@ -14,6 +14,7 @@ import { RecommendationItemComponent } from './components/recommendation-item/re
 import { RecommendationListComponent } from './pages/recommendation-list/recommendation-list.component';
 import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 import { RecommendationsFormComponent } from './components/recommendations-form/recommendations-form.component';
+import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RecommendationsFormComponent } from './components/recommendations-form/
     RecommendationItemComponent,
     RecommendationListComponent,
     EmptyStateComponent,
-    RecommendationsFormComponent
+    RecommendationsFormComponent,
+    FormDialogComponent
   ],
   imports: [
     BrowserModule,
