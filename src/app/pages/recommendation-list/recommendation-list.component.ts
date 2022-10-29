@@ -17,16 +17,21 @@ export class RecommendationListComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.loadCategories();
-    this.loadRecommendations;
+    this.loadRecommendations(this.ALL_RECOMMENDATIONS);
   }
 
-  public async loadCategories(): Promise<void> {
-    this.categories = await this.apiService.get<Category[]>('category')
+  public filter(categoryId: number): void {
+    this.currentCategory = categoryId;
+    this.loadRecommendations(categoryId);
   }
 
-  public async loadRecommendations(category: number): Promise<void> {
+  private async loadCategories(): Promise<void> {
+    this.categories = await this.apiService.get<Category[]>('categories')
+  }
+
+  private async loadRecommendations(category: number): Promise<void> {
     let params: object = {}
 
     if (category != this.ALL_RECOMMENDATIONS) {
@@ -36,9 +41,5 @@ export class RecommendationListComponent implements OnInit {
     this.recommendations = await this.apiService.get<Recommendation[]>('recommendations', params)
   }
 
-  public filter(categoryId: number): void {
-    this.currentCategory = categoryId;
-    this.loadRecommendations(categoryId);
-  }
 
 }
