@@ -1,4 +1,4 @@
-import { AppToastService } from './../../services/toast.service';
+import { AppToastService } from '../../services/toast.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -10,9 +10,9 @@ import { Category } from '../../models/category';
 
 
 @Component({
-  selector: 'app-recommendations-form',
-  templateUrl: './recommendations-form.component.html',
-  styleUrls: ['./recommendations-form.component.scss'],
+  selector: 'app-recommendation-form',
+  templateUrl: './recommendation-form.component.html',
+  styleUrls: ['./recommendation-form.component.scss'],
 })
 export class RecommendationFormComponent implements OnInit {
   @Input() recommendation?: Recommendation;

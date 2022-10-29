@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecommendationsFormComponent } from './recommendations-form.component';
+import { RecommendationsFormComponent } from './recommendation-form.component';
 
 describe('RecommendationsFormComponent', () => {
   let component: RecommendationsFormComponent;
