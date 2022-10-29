@@ -13,6 +13,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { RecommendationItemComponent } from './components/recommendation-item/recommendation-item.component';
 import { RecommendationListComponent } from './pages/recommendation-list/recommendation-list.component';
 import { EmptyStateComponent } from './components/empty-state/empty-state.component';
+import { RecommendationsFormComponent } from './components/recommendations-form/recommendations-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EmptyStateComponent } from './components/empty-state/empty-state.compon
     LayoutComponent,
     RecommendationItemComponent,
     RecommendationListComponent,
-    EmptyStateComponent
+    EmptyStateComponent,
+    RecommendationsFormComponent
   ],
   imports: [
     BrowserModule,
