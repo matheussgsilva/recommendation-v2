@@ -19,6 +19,10 @@ export class ApiService {
     return this.parseRequest<T>(this.httpClient.post<T>(`${environment.apiUrl}${path}`, body, this.getOptions({})))
   }
 
+  public patch<T>(path: string, body: object): Promise<T> {
+    return this.parseRequest<T>(this.httpClient.patch<T>(`${environment.apiUrl}${path}`, body, this.getOptions({})))
+  }
+
   public delete<T>(path: string): Promise<T> {
     return this.parseRequest<T>(this.httpClient.delete<T>(`${environment.apiUrl}${path}`, this.getOptions({})))
   }
