@@ -1,4 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap";
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+body {
+  background-color: #eeeeee;
+}
+
+.user-picture {
+  width: 48px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.rectangle {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+
+.btn-icon {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
