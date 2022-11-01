@@ -16,6 +16,7 @@ import { EmptyStateComponent } from './components/empty-state/empty-state.compon
 import { RecommendationFormComponent } from './components/recommendation-form/recommendation-form.component';
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { RecommendationDetailsComponent } from './pages/recommendation-details/recommendation-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     RecommendationListComponent,
     EmptyStateComponent,
     RecommendationFormComponent,
-    FormDialogComponent
+    FormDialogComponent,
+    RecommendationDetailsComponent
   ],
   imports: [
     BrowserModule,
