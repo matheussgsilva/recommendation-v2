@@ -19,6 +19,7 @@ export class RecommendationListComponent implements OnInit, AfterViewInit {
   public categories: Category[] = [];
   public currentCategory: number = this.ALL_RECOMMENDATIONS;
   public showDialog: boolean = false;
+  public loading: boolean = true;
 
   constructor(private apiService: ApiService) { }
 
@@ -49,6 +50,7 @@ export class RecommendationListComponent implements OnInit, AfterViewInit {
   }
 
   private async loadRecommendations(category: number): Promise<void> {
+    this.loading = true;
     let params: object = {}
 
     if (category != this.ALL_RECOMMENDATIONS) {
@@ -56,6 +58,7 @@ export class RecommendationListComponent implements OnInit, AfterViewInit {
     }
 
     this.recommendations = await this.apiService.get<Recommendation[]>('recommendations', params)
+    setTimeout(() => { this.loading = false }, 1500);
   }
 
 

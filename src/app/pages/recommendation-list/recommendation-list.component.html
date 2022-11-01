@@ -17,6 +17,17 @@
 <app-empty-state title="Nenhuma recomendação" message="Volte novamente mais tarde ou crie uma nova recomendação"
   *ngIf="recommendations.length == 0"></app-empty-state>
 
+<ngx-skeleton-loader
+  *ngIf="loading"
+  count="8"
+  [theme]="{
+    'height': '400px',
+    'width': '24%',
+    'margin-right': '1%',
+    'border-radius': '5px'
+  }"
+></ngx-skeleton-loader>
+
 <div class="row align-items-stretch">
   <div class="col-12 col-md-3 mb-4" *ngFor="let recommendation of recommendations">
     <app-recommendation-item
