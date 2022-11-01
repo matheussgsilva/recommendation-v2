@@ -19,7 +19,7 @@ export class LayoutComponent implements OnInit {
   }
 
   public logout() {
-    this.authService.logout;
+    this.authService.logout();
   }
 
 }
