@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+
 import { Category } from 'src/app/models/category';
 import { Recommendation } from 'src/app/models/recommendation';
+
 import { ApiService } from 'src/app/services/api.service';
+
+import * as feather from 'feather-icons';
 
 @Component({
   selector: 'app-recommendation-list',
   templateUrl: './recommendation-list.component.html',
   styleUrls: ['./recommendation-list.component.scss']
 })
-export class RecommendationListComponent implements OnInit {
+export class RecommendationListComponent implements OnInit, AfterViewInit {
 
   public readonly ALL_RECOMMENDATIONS: number = 0;
   public recommendations: Recommendation[] = [];
   public categories: Category[] = [];
   public currentCategory: number = this.ALL_RECOMMENDATIONS;
+  public showDialog: boolean = false;
 
   constructor(private apiService: ApiService) { }
 
@@ -22,9 +27,21 @@ export class RecommendationListComponent implements OnInit {
     this.loadRecommendations(this.ALL_RECOMMENDATIONS);
   }
 
+  public ngAfterViewInit() {
+    feather.replace();
+  }
+
   public filter(categoryId: number): void {
     this.currentCategory = categoryId;
     this.loadRecommendations(categoryId);
+  }
+
+  public showAddDialog() {
+    this.showDialog = true;
+  }
+
+  public onCloseDialog() {
+    this.showDialog = false;
   }
 
   private async loadCategories(): Promise<void> {
