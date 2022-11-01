@@ -7,5 +7,5 @@ export interface Recommendation {
   name: string;
   image_url: string;
   description?: string;
-  comments: Comment;
+  comments: Comment[];
 }

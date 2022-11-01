@@ -1,1 +1,72 @@
-<p>recommendation-details works!</p>
+<a [routerLink]="['']" class="d-block text-muted mb-3">Voltar</a>
+
+<div class="row" *ngIf="!loading;else loader">
+  <div class="col-12 col-md-4">
+    <div class="card">
+      <img [src]="recommendation.image_url" class="card-img-top">
+      <div class="card-body">
+        <span class="badge rounded-pill bg-dark mb-3 text-bg-primary">{{recommendation.category.name}}</span>
+        <h5 class="card-title">{{recommendation.name}}</h5>
+        <p class="card-text">{{recommendation.description}}</p>
+      </div>
+    </div>
+    <button (click)="showEditDialog()" class="btn btn-dark mt-3 w-100">Editar Recommendação</button>
+    <button (click)="deleteRecommendation()" class="btn btn-danger mt-3 w-100">Excluir Recommendação</button>
+  </div>
+  <div class="col-12 col-md-8">
+    <div class="card rounded shadow">
+      <div class="card-body" *ngIf="recommendation.comments;else emptyState">
+        <h5 class="border-bottom pb-2 mb-0">Comentários</h5>
+        <div class="d-flex align-items-start text-muted pt-3" *ngFor="let comment of recommendation.comments">
+          <img [src]="comment.user.picture_url" class="user-picture me-3">
+
+          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+            <strong class="d-block text-gray-dark">{{comment.user.name}}</strong>
+            <p class="mb-0">{{comment.content}}</p>
+            <time class="comment-date d-block">{{comment.created_at | date:'medium' }}</time>
+          </div>
+        </div>
+        <div class="mt-3">
+          <ngx-skeleton-loader
+            *ngIf="commentsLoading"
+            count="1"
+            [theme]="{
+              'height': '80px',
+              'width': '100%',
+              'margin-bottom': '0',
+              'border-radius': '5px'
+            }"
+          ></ngx-skeleton-loader>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-12 col-md-10">
+            <input [(ngModel)]="newComment" type="text" class="form-control" placeholder="Digite seu comentario" (keydown.enter)="sendComment()">
+          </div>
+          <div class="col-12 col-md-2">
+            <button class="btn btn-dark w-100" [disabled]="!newComment" (click)="sendComment()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
+<ng-template #emptyState>
+  <app-empty-state
+    title="Nenhum Comentário"
+    message="Seja o primeiro a deixar um comentário sobre esta recomendação"
+  ></app-empty-state>
+</ng-template>
+
+<app-form-dialog
+  [recommendation]="recommendation"
+  [showDialog]="showDialog"
+  (onCloseDialog)="onCloseDialog($event)"
+  *ngIf="recommendation"
+  ></app-form-dialog>
