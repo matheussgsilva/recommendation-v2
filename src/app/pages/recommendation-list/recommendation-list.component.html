@@ -28,10 +28,11 @@
   }"
 ></ngx-skeleton-loader>
 
-<div class="row align-items-stretch">
+<div class="row align-items-stretch" *ngIf="!loading">
   <div class="col-12 col-md-3 mb-4" *ngFor="let recommendation of recommendations">
     <app-recommendation-item
       [recommendation]="recommendation"
+      (click)="showDetails(recommendation)"
     >
     </app-recommendation-item>
   </div>

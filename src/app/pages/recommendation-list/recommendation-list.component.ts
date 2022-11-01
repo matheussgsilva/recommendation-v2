@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router'; 
 
 import { Category } from 'src/app/models/category';
 import { Recommendation } from 'src/app/models/recommendation';
@@ -21,7 +22,10 @@ export class RecommendationListComponent implements OnInit, AfterViewInit {
   public showDialog: boolean = false;
   public loading: boolean = true;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private route: Router
+    ) { }
 
   public ngOnInit(): void {
     this.loadCategories();
@@ -35,6 +39,10 @@ export class RecommendationListComponent implements OnInit, AfterViewInit {
   public filter(categoryId: number): void {
     this.currentCategory = categoryId;
     this.loadRecommendations(categoryId);
+  }
+
+  public showDetails(recommendation: Recommendation) {
+    this.route.navigate(['recomendacao', recommendation.id])
   }
 
   public showAddDialog() {
